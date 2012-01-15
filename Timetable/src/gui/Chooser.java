@@ -256,7 +256,7 @@ public class Chooser extends JPanel {
 				teacher.addItem(new String("----------не выбрано----------"));
 				if (lesson.getSelectedIndex() > 0) {
 					if (curLesson != (Lesson) lesson.getSelectedItem()) {
-						curLesson = (Lesson) lesson.getSelectedItem();
+						curLesson = (Lesson) lesson.getSelectedItem();			
 						setbut.setEnabled(false);
 					}
 
@@ -264,6 +264,8 @@ public class Chooser extends JPanel {
 					List<Teacher> teacherarr = curLesson.getPossibleTeachers();
 					for (int i = 0; i < teacherarr.size(); i++)
 						teacher.addItem((Object) teacherarr.get(i));
+					if (curLesson.getTeacher()!=null)
+						teacher.setSelectedItem(curLesson.getTeacher());
 					flag = true;
 					setbut.setEnabled(true);
 					teacher.setEnabled(true);
@@ -358,6 +360,8 @@ public class Chooser extends JPanel {
 		setSubject(curspec.getYears().get(curyear - 1).getSubjects()
 				.indexOf(lesson.getParent().getParent()));
 		this.lesson.setSelectedItem(lesson);
+		if (lesson.getTeacher()!=null)
+			teacher.setSelectedItem(curLesson.getTeacher());
 	}
 
 	public Specialty getCurSpec() {
