@@ -197,6 +197,7 @@ public class MyJTable extends JTable implements model.Constants {
 				if (GUI.chooser.setbut.isEnabled()) {
 					GUI.tabbedPanel.addLessonToSelectedCell(GUI.chooser.curLesson);
 					GUI.tabbedPanel.repaint();
+					GUI.chooser.lesson.setSelectedIndex(0);
 				}
 			}
 		}

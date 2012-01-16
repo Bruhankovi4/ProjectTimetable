@@ -125,12 +125,9 @@ public class Chooser extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				set();
-				// lesson.update(lesson.getGraphics());
 				lesson.repaint();
 				subject.repaint();
-				// subject.update(subject.getGraphics());
 				spetiality.repaint();
-				// spetiality.update(spetiality.getGraphics());
 			}
 		});
 		JPanel empty = new JPanel(); // empty places between comboboxes
@@ -256,23 +253,17 @@ public class Chooser extends JPanel {
 				teacher.addItem(new String("----------не выбрано----------"));
 				if (lesson.getSelectedIndex() > 0) {
 					if (curLesson != (Lesson) lesson.getSelectedItem()) {
-						curLesson = (Lesson) lesson.getSelectedItem();			
+						curLesson = (Lesson) lesson.getSelectedItem();
 						setbut.setEnabled(false);
 					}
-
-					// curLesson =(Lesson) lesson.getSelectedItem();
 					List<Teacher> teacherarr = curLesson.getPossibleTeachers();
 					for (int i = 0; i < teacherarr.size(); i++)
 						teacher.addItem((Object) teacherarr.get(i));
-					if (curLesson.getTeacher()!=null)
+					if (curLesson.getTeacher() != null)
 						teacher.setSelectedItem(curLesson.getTeacher());
-					flag = true;
-					setbut.setEnabled(true);
 					teacher.setEnabled(true);
-					if (curLesson.isFinished())
-						setbut.setEnabled(false);
-					else
-						setbut.setEnabled(true);
+					if (curLesson.getTime() != null)
+						GUI.tabbedPanel.selectedLesson = curLesson;
 				} else {
 					teacher.setEnabled(false);
 					curLesson = null;
@@ -360,7 +351,7 @@ public class Chooser extends JPanel {
 		setSubject(curspec.getYears().get(curyear - 1).getSubjects()
 				.indexOf(lesson.getParent().getParent()));
 		this.lesson.setSelectedItem(lesson);
-		if (lesson.getTeacher()!=null)
+		if (lesson.getTeacher() != null)
 			teacher.setSelectedItem(curLesson.getTeacher());
 	}
 
