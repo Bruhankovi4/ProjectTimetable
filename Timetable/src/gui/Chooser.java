@@ -171,6 +171,13 @@ public class Chooser extends JPanel {
 		GUI.tabbedPanel.addLessonToSelectedCell(curLesson);
 		GUI.tabbedPanel.repaint();
 		lesson.setSelectedIndex(0);
+		try{
+		teacher.setSelectedIndex(0);
+		}
+		catch (Exception e) {
+			System.out.println("exception");//maybe dead-code
+		}
+		
 	}
 
 	void initboxes() {
